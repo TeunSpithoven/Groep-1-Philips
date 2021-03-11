@@ -1,7 +1,7 @@
 {
-  "name": "understanding-typescript",
+  "name": "bolus",
   "version": "1.0.0",
-  "description": "Understanding TypeScript Course Setup",
+  "description": "bolus Setup",
   "main": "app.js",
   "scripts": {
     "test": "jest",
