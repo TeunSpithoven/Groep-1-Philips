@@ -1,16 +1,16 @@
-const { BolusCalculation } = require('./bolus');
+const { InsulineDoseCalculation } = require('./bolus');
 
 test('should output Bolus number', () => {
-    const BolusAnswer = BolusCalculation(90, 70);
+    const insulineDose = InsulineDoseCalculation(90, 70);
     expect(6.93);
 })
 
 test('should output Bolus number', () => {
-    const BolusAnswer = BolusCalculation(-50, 60);
-    expect("Are you sure you entered the right information?");
+    const insulineDose = InsulineDoseCalculation(-50, 60);
+    expect(null);
 })
 
 test('should output Bolus number', () => {
-    const BolusAnswer = BolusCalculation(800, 100);
-    expect("Are you sure you entered the right information?");
+    const insulineDose = InsulineDoseCalculation(800, 100);
+    expect(null);
 })
