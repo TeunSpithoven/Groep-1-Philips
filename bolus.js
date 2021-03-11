@@ -1,7 +1,12 @@
 var weight = document.getElementById("weight");
 var carbs = document.getElementById("carbs");
 var button = document.getElementById("button");
+//for unit testing, uncomment below
+//export {InsulineTotalCalculation};
+//export {BasalDoseCalculation};
+//export {RatioCalculation};
 //export {InsulineDoseCalculation};
+//export {ValidateInput};
 function ValidateInput(weight, carbsOfMeal) {
     if (weight > 450 || weight < 0.25 || carbsOfMeal < 1 || carbsOfMeal > 300) {
         return (false);
