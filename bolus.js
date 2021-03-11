@@ -4,15 +4,22 @@ var button = document.getElementById("button");
 //export {InsulineDoseCalculation};
 function ValidateInput(weight, carbsOfMeal) {
     if (weight > 450 || weight < 0.25 || carbsOfMeal < 1 || carbsOfMeal > 300) {
-        return (null);
+        return (false);
     }
     else {
+        return (true);
     }
 }
 window.onload = function () {
     button.addEventListener("click", function () {
-        console.log("Het aantal units dat u nodig heeft is " + InsulineDoseCalculation(parseFloat(weight.value), parseFloat(carbs.value)));
-        console.log("Het totaal insuline aantal wat u nodig heeft is " + InsulineTotalCalculation(parseFloat(weight.value)));
+        var returnUnits = InsulineDoseCalculation(parseFloat(weight.value), parseFloat(carbs.value));
+        var returnInsulineTotal = Math.round(InsulineTotalCalculation(parseFloat(weight.value)));
+        var returnBasalDose = Math.round(BasalDoseCalculation(parseFloat(weight.value)));
+        var returnRatio = Math.round(RatioCalculation(parseFloat(weight.value)));
+        console.log("Het aantal units dat u nodig heeft is " + returnUnits);
+        console.log("Het totaal insuline aantal wat u nodig heeft is " + returnInsulineTotal);
+        console.log("Uw basale dosus is " + returnBasalDose);
+        console.log(returnRatio);
     });
 };
 function InsulineTotalCalculation(weight) {
@@ -33,5 +40,5 @@ function RatioCalculation(weight) {
 function InsulineDoseCalculation(weight, carbsOfMeal) {
     // the insuline needed to be taken after the meal round off to 2 decimals
     var insulineDose = carbsOfMeal / RatioCalculation(weight);
-    return insulineDose.toFixed(0);
+    return Math.round(insulineDose);
 }
