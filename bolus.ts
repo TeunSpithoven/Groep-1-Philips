@@ -7,17 +7,18 @@ const button = document.getElementById("button");
 
 function ValidateInput(weight: number, carbsOfMeal: number){
     if (weight > 450 || weight < 0.25 || carbsOfMeal < 1 || carbsOfMeal > 300){
-        return (null);
+        return (false);
 	}
 
     else{
-        
+        return (true);
     }
 }
 
 window.onload=function(){
     button.addEventListener("click", function() {
-        console.log(InsulineDoseCalculation(parseFloat(weight.value), parseFloat(carbs.value)));
+        console.log("Het aantal units dat u nodig heeft is " + InsulineDoseCalculation(parseFloat(weight.value), parseFloat(carbs.value)));
+        console.log("Het totaal insuline aantal wat u nodig heeft is " + InsulineTotalCalculation(parseFloat(weight.value)));
         });
   }
 
@@ -26,7 +27,7 @@ window.onload=function(){
 function InsulineTotalCalculation(weight: number){
         //calculate the total daily needed insuline intake base on weight
         let insulineTotal: number = weight * 0.55;
-        return insulineTotal;
+        return insulineTotal.toFixed(1);
 }
 
 function BasalDoseCalculation(weight: number){

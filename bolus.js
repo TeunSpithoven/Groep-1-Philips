@@ -11,7 +11,8 @@ function ValidateInput(weight, carbsOfMeal) {
 }
 window.onload = function () {
     button.addEventListener("click", function () {
-        console.log(InsulineDoseCalculation(parseFloat(weight.value), parseFloat(carbs.value)));
+        console.log("Het aantal units dat u nodig heeft is " + InsulineDoseCalculation(parseFloat(weight.value), parseFloat(carbs.value)));
+        console.log("Het totaal insuline aantal wat u nodig heeft is " + InsulineTotalCalculation(parseFloat(weight.value)));
     });
 };
 function InsulineTotalCalculation(weight) {
