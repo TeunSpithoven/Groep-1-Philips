@@ -1,26 +1,31 @@
 {
-  "name": "bolus",
-  "version": "1.0.0",
-  "description": "bolus Setup",
-  "main": "app.js",
-  "scripts": {
-    "test": "jest",
-    "start": "lite-server"
-  },
-  "keywords": [
-    "typescript",
-    "course"
-  ],
-  "author": "Mees Zonneveld",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/jest": "^26.0.20",
-    "jest": "^26.6.3",
-    "lite-server": "^2.5.4",
-    "ts-jest": "^26.5.3",
-    "typescript": "^4.2.3"
-  },
-  "dependencies": {
-    "yarn": "^1.22.10"
-  }
+   "name": "bolus",
+   "version": "1.0.0",
+   "description": "bolus Setup",
+   "main": "app.js",
+   "scripts": {
+      "test": "jest",
+      "start": "ts-node src/index.ts"
+   },
+   "keywords": [
+      "typescript",
+      "course"
+   ],
+   "author": "Mees Zonneveld",
+   "license": "ISC",
+   "devDependencies": {
+      "@types/jest": "^26.0.20",
+      "jest": "^26.6.3",
+      "lite-server": "^2.5.4",
+      "ts-jest": "^26.5.3",
+      "typescript": "3.3.3333",
+      "ts-node": "3.3.0",
+      "@types/node": "^8.0.29"
+   },
+   "dependencies": {
+      "yarn": "^1.22.10",
+      "typeorm": "0.2.31",
+      "reflect-metadata": "^0.1.10",
+      "mysql": "^2.14.1"
+   }
 }

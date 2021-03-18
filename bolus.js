@@ -9,6 +9,7 @@ function ValidateInput(weight, carbsOfMeal) {
     else {
     }
 }
+
 window.onload = function () {
     button.addEventListener("click", function () {
         console.log(InsulineDoseCalculation(parseFloat(weight.value), parseFloat(carbs.value)));
