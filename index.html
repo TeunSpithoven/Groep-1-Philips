@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +14,19 @@
 
 <body>
     <div class="bolus">
-        <h1>Bolus Calculatie<h1></h1>
-            <label>Weight in Kilograms</label>
-            <br />
-            <input type="number" id="weight" placeholder="80" />
-            <br />
-            <label>Carbs in grams</label>
-            <br />
-            <input type="number" id="carbs" placeholder="36" />
-            <br />
-            <button id="button">Calculate</button>
-            <br />
-            <label type="text" id="bolusOutput"></label>
-            <!--<label id="bolusOutput"></label>-->
+        <form>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Weight in Kilograms</label>
+                <input type="text" class="form-control" id="weight" placeholder="Example input">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Carbs in grams</label>
+                <input type="text" class="form-control" id="carbs" placeholder="Another input">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary" id="bolusOutput">Submit</button>
+            </div>
+        </form>
     </div>
 </body>
 

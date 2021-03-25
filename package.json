@@ -23,9 +23,10 @@
       "@types/node": "^8.0.29"
    },
    "dependencies": {
-      "yarn": "^1.22.10",
-      "typeorm": "0.2.31",
+      "bootstrap": "^5.0.0-beta3",
+      "mysql": "^2.14.1",
       "reflect-metadata": "^0.1.10",
-      "mysql": "^2.14.1"
+      "typeorm": "0.2.31",
+      "yarn": "^1.22.10"
    }
 }
