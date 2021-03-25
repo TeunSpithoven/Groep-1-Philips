@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 .idea/
 .vscode/
 node_modules/
 build/
 tmp/
 temp/
+=======
+node_modules
+package-lock.json
+*.js
+>>>>>>> 164a747e275f374f5b8eef25f3cc2ca5089d65a7
