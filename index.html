@@ -1,33 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bolus Calculatie</title>
-    <script src="bolus.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.82.0">
+  <title>Bolus Calculation</title>
 
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="bolus.js" defer></script>
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="style2.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="bolus">
-        <form>
-            <div class="form-group">
-                <label for="formGroupExampleInput">Weight in Kilograms</label>
-                <input type="text" class="form-control" id="weight" placeholder="Example input">
-            </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput2">Carbs in grams</label>
-                <input type="text" class="form-control" id="carbs" placeholder="Another input">
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary" id="bolusOutput">Submit</button>
-            </div>
-        </form>
+<body class="text-center">
+
+  <main class="form-signin">
+    <h1 style="float: left; padding-bottom: 20px;" class="h3 mb-3 fw-normal">Bereken insuline dosis</h1>
+
+    <div>
+      <label style="float: left;">Lichaamsgewicht in kilogram:</label>
     </div>
+    <div class="form-floating">
+      <input type="text" class="form-control" placeholder="80" id="weight2">
+    </div> <br>
+    <div>
+      <label style="float: left;">Koolhydraten in gram:</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" class="form-control" placeholder="70" id="carbs2">
+    </div>
+    <br>
+    <div>
+      <label>Aantal te nemen insuline units: </label> <label id="bolusOutputLabel"></label>
+    </div>
+    <div>
+      <button class="w-100 btn btn-lg btn-primary" id="button">Bereken</button>
+    </div>
+    <br>
+    <div class="alert alert-danger" style="display: none;" role="alert" id="error">
+      Mislukt, heb je de juiste informatie ingevuld?
+    </div>
+
+    <div class="alert alert-success" style="display: none;" role="alert" id="correct">
+      Gelukt!
+    </div>
+
+  </main>
+
+  
+
 </body>
 
 </html>

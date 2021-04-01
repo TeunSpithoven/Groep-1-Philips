@@ -6,11 +6,12 @@ let outputLabel = ( < HTMLInputElement > document.getElementById("bolusOutputLab
 const button = document.getElementById("button");
 
 // for unit testing, uncomment below
-// export {InsulineTotalCalculation};
-// export {BasalDoseCalculation};
-// export {RatioCalculation};
-// export {InsulineDoseCalculation} hugu;
-// export {ValidateInput}
+export {InsulineTotalCalculation};
+export {BasalDoseCalculation};
+export {RatioCalculation};
+export {InsulineDoseCalculation};
+export {ValidateInput};
+
 function ValidateInput(weight: number, carbsOfMeal: number) {
     if (weight > 450 || weight < 0.25 || carbsOfMeal < 1 || carbsOfMeal > 300) {
         return (false);
@@ -30,7 +31,7 @@ window.onload = function () {
         if (returnRatio == 0 || returnRatio == null){
             HtmlError.style.display = "block";
             Htmlcorrect.style.display = "none";
-            
+            outputLabel.innerHTML = String("-");
         }
         else{
             Htmlcorrect.style.display = "block";
