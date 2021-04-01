@@ -6,29 +6,35 @@ let outputLabel = ( < HTMLInputElement > document.getElementById("bolusOutputLab
 const button = document.getElementById("button");
 
 // for unit testing, uncomment below
-export {InsulineTotalCalculation};
-export {BasalDoseCalculation};
-export {RatioCalculation};
-export {InsulineDoseCalculation};
-export {ValidateInput};
+//export {InsulineTotalCalculation};
+//export {BasalDoseCalculation};
+//export {RatioCalculation};
+//export {InsulineDoseCalculation};
+//export {ValidateInput};
 
 function ValidateInput(weight: number, carbsOfMeal: number) {
     if (weight > 450 || weight < 0.25 || carbsOfMeal < 1 || carbsOfMeal > 300) {
         return (false);
     } else {
-        return (true);
+        if (weight >= 0.25 && carbsOfMeal > 1){
+            return (true);
+        }
+        else{
+            return(false);
+        }
+        
     }
 }
 
 window.onload = function () {
     button.addEventListener("click", function () {
-
         let returnUnits: number = InsulineDoseCalculation(parseFloat(weight.value), parseFloat(carbs.value));
         let returnInsulineTotal: number = Math.round(InsulineTotalCalculation(parseFloat(weight.value)));
         let returnBasalDose: number = Math.round(BasalDoseCalculation(parseFloat(weight.value)));
         let returnRatio : number = Math.round(RatioCalculation(parseFloat(weight.value)));
+        let validInput : boolean = ValidateInput(parseFloat(weight.value), parseFloat(carbs.value));
         
-        if (returnRatio == 0 || returnRatio == null){
+        if (validInput == false){
             HtmlError.style.display = "block";
             Htmlcorrect.style.display = "none";
             outputLabel.innerHTML = String("-");

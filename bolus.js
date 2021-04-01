@@ -5,17 +5,22 @@ var Htmlcorrect = document.getElementById("correct");
 var outputLabel = document.getElementById("bolusOutputLabel");
 var button = document.getElementById("button");
 // for unit testing, uncomment below
-// export {InsulineTotalCalculation};
-// export {BasalDoseCalculation};
-// export {RatioCalculation};
-// export {InsulineDoseCalculation} hugu;
-// export {ValidateInput}
+//export {InsulineTotalCalculation};
+//export {BasalDoseCalculation};
+//export {RatioCalculation};
+//export {InsulineDoseCalculation};
+//export {ValidateInput};
 function ValidateInput(weight, carbsOfMeal) {
     if (weight > 450 || weight < 0.25 || carbsOfMeal < 1 || carbsOfMeal > 300) {
         return (false);
     }
     else {
-        return (true);
+        if (weight >= 0.25 && carbsOfMeal > 1) {
+            return (true);
+        }
+        else {
+            return (false);
+        }
     }
 }
 window.onload = function () {
@@ -24,9 +29,11 @@ window.onload = function () {
         var returnInsulineTotal = Math.round(InsulineTotalCalculation(parseFloat(weight.value)));
         var returnBasalDose = Math.round(BasalDoseCalculation(parseFloat(weight.value)));
         var returnRatio = Math.round(RatioCalculation(parseFloat(weight.value)));
-        if (returnRatio == 0 || returnRatio == null) {
+        var validInput = ValidateInput(parseFloat(weight.value), parseFloat(carbs.value));
+        if (validInput == false) {
             HtmlError.style.display = "block";
             Htmlcorrect.style.display = "none";
+            outputLabel.innerHTML = String("-");
         }
         else {
             Htmlcorrect.style.display = "block";
