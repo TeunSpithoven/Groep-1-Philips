@@ -1,9 +1,12 @@
-let weight = ( < HTMLInputElement > document.getElementById("weight2"));
-let carbs = ( < HTMLInputElement > document.getElementById("carbs2"));
-let HtmlError = ( < HTMLInputElement > document.getElementById("error"));
-let Htmlcorrect = ( < HTMLInputElement > document.getElementById("correct"));
-let outputLabel = ( < HTMLInputElement > document.getElementById("bolusOutputLabel"));
+let weight = (<HTMLInputElement>document.getElementById("weight2"));
+let carbs = (<HTMLInputElement>document.getElementById("carbs2"));
+let HtmlError = (<HTMLInputElement>document.getElementById("error"));
+let Htmlcorrect = (<HTMLInputElement>document.getElementById("correct"));
+let outputLabel = (<HTMLInputElement>document.getElementById("bolusOutputLabel"));
 const button = document.getElementById("button");
+
+import fetch from "fetch";
+import * as cors from "cors";
 
 // for unit testing, uncomment below
 //export {InsulineTotalCalculation};
@@ -12,28 +15,46 @@ const button = document.getElementById("button");
 //export {InsulineDoseCalculation};
 //export {ValidateInput};
 
-function ValidateInput(weight: number, carbsOfMeal: number) {
-    if (weight > 450 || weight < 0.25 || carbsOfMeal < 1 || carbsOfMeal > 300) {
-        return (false);
-    } else {
-        return (true);
+function GetBolusCalculation(weight: number, carbsOfMeal: number) {
+    var http = new XMLHttpRequest();
+    var params = 'weight=' + weight + "&carbsOfMeal=" + carbsOfMeal;
+    var url = 'http://localhost:3000/bolus/?' + params;
+    http.open('GET', url);
+
+    //Send the proper header information along with the request
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function () {//Call a function when the state changes.
+        if (http.readyState == 4 && http.status == 200) {
+            if (http.responseText != "error"){
+                Htmlcorrect.style.display = "block";
+                HtmlError.style.display = "none";
+                outputLabel.innerHTML = String(http.responseText);
+            }
+            else{
+                HtmlError.style.display = "block";
+                Htmlcorrect.style.display = "none";
+            }
+        }
     }
+    http.send(params);
 }
+
+
+
 
 window.onload = function () {
     button.addEventListener("click", function () {
 
-        let returnUnits: number = InsulineDoseCalculation(parseFloat(weight.value), parseFloat(carbs.value));
-        let returnInsulineTotal: number = Math.round(InsulineTotalCalculation(parseFloat(weight.value)));
-        let returnBasalDose: number = Math.round(BasalDoseCalculation(parseFloat(weight.value)));
-        let returnRatio : number = Math.round(RatioCalculation(parseFloat(weight.value)));
-        
-        if (returnRatio == 0 || returnRatio == null){
+        console.log(GetBolusCalculation(parseFloat(weight.value), parseFloat(carbs.value)));
+
+        /*
+        if (returnRatio == 0 || returnRatio == null) {
             HtmlError.style.display = "block";
             Htmlcorrect.style.display = "none";
             outputLabel.innerHTML = String("-");
         }
-        else{
+        else {
             Htmlcorrect.style.display = "block";
             HtmlError.style.display = "none";
             outputLabel.innerHTML = String(returnUnits);
@@ -43,7 +64,7 @@ window.onload = function () {
         console.log("Het totaal insuline aantal wat u nodig heeft is " + returnInsulineTotal);
         console.log("Uw basale dosus is " + returnBasalDose);
         console.log(returnRatio);
-
+        */
     });
 }
 
@@ -72,3 +93,63 @@ function InsulineDoseCalculation(weight: number, carbsOfMeal: number): number {
     let insulineDose: number = carbsOfMeal / RatioCalculation(weight);
     return Math.round(insulineDose);
 }
+
+/////////////////////////////////////DEZE SHIT IS VAN GROEP 4 GESTOLEN!!!/////////////////////////////////////////////////////////////////////////
+
+// import { calculation } from "../Models/calculation";
+// export class api {
+//     static async sendCalculationToAPI(weight: number, carbDose: number): Promise < boolean > {
+//         const date = new Date().toLocaleString();
+//         const json = JSON.stringify({"weight":weight,"carbDose":carbDose,"calculationDateTime":date});
+
+//         const myHeaders = new Headers();
+//         myHeaders.append("Content-Type", "application/json");
+//         myHeaders.append("Connection", "keep-alive");
+//         myHeaders.append("timeout", "5000");
+
+//         const response = await fetch("http://localhost:3000/", {
+//             method: 'POST',
+//             headers: myHeaders,
+//             body: json,
+//         });
+
+//         if (response.ok) {
+//             return true;
+//         } else {
+//             return false;
+//         }
+//     }
+
+    // static async getCalculationFromApiGroep4(): Promise<string>{
+    //     const myHeaders = new Headers();
+    //     myHeaders.append("Content-Type", "application/json");
+    //     myHeaders.append("Connection", "keep-alive");
+    //     myHeaders.append("timeout", "5000");
+
+    //     const response = await fetch("http://localhost:3000/", {
+    //        method: 'GET',
+    //        headers: myHeaders,
+    //     });
+
+    //     const data = await response.json().catch(error => console.log(error));
+    //     console.log(data);
+    //     return data;
+    // }
+    // function get(url) {
+    //     return new Promise((resolve, reject) => {
+    //         const req = new XMLHttpRequest()
+
+    //         req.onreadystatechange = function(){
+    //             if (req.readyState === 4 && req.status === 200){
+    //                 resolve(req.responseText)
+    //             }
+
+    //             req.onerror = function() {
+    //                 reject(Error(req.statusText))
+    //             }
+    //         }
+    //         req.open('GET', url)
+    //         req.send()
+    //     })
+    // }
+// } 
