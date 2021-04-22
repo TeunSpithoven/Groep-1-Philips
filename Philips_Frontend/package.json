@@ -8,8 +8,7 @@
       "start": "ts-node src/index.ts"
    },
    "keywords": [
-      "typescript",
-      "course"
+      "typescript"
    ],
    "author": "Mees Zonneveld",
    "license": "ISC",
