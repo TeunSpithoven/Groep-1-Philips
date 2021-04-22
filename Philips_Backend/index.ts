@@ -1,6 +1,5 @@
 import express from "express";
 import * as boluscalc from "./boluscalculation";
-
 const app = express();
 
 app.get('/', (req, res) => {
