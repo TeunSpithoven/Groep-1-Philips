@@ -1,24 +1,6 @@
 # Groep-1-Philips
 
-Bolus calculatie, typescript application with jest unit testing
-
-
-Installatie:
-
-Als je nog geen NodeJS op je computer hebt staan, installeer dit dan eerst.
-
-
-Daarnaast moet je Typescript installeren:
-
-npm install -g typescript
-
-
-Om alle packages benodigd voor het project te installeren in de terminal:
-
-npm install
-
-
-Om een handmatige unit test uit te voeren in de terminal:
-
-npm test
-
+De front-end kun je opstarten door de html file te runnen met een live server.
+maar doe eerst "npm install"
+Als je gebruik wil maken van de functionaliteit moet je de backend opstarten.
+Hoe je dit doet staat in de readme in de back-end.

@@ -10,10 +10,4 @@ Daarnaast moet je Typescript installeren:
 
 npm install -g typescript
 
-Om alle packages benodigd voor het project te installeren in de terminal:
-
-npm install
-
-Om een handmatige unit test uit te voeren in de terminal:
-
-npm test
+kijk in de readme in de front en back-end hoe je die moet starten

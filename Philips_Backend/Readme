@@ -1,4 +1,7 @@
 dit is de backend api voor proftaakgroep
 
+om te starten doe eerst
 
-om de api te starten: npm start
+npm install
+
+dan npm start
