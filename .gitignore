@@ -6,5 +6,5 @@ tmp/
 temp/
 node_modules
 package-lock.json
-*.js
-!jest.config.js #exclute test config
+dist
+bolus.js

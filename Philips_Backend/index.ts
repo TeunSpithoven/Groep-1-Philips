@@ -7,20 +7,6 @@ app.get('/', (req, res) => {
   res.send('Hello from express and typescript')
 })
 
-function ValidateInput(weight: number, carbsOfMeal: number) {
-  if (weight > 450 || weight < 0.25 || carbsOfMeal < 1 || carbsOfMeal > 300) {
-    return (false);
-  } else {
-    if (weight >= 0.25 && carbsOfMeal > 1) {
-      return (true);
-    }
-    else {
-      return (false);
-    }
-
-  }
-}
-
 app.get('/bolus/', async function (req, res) {
 
   var weight = (req.query.weight);
@@ -44,7 +30,7 @@ app.get('/bolus/', async function (req, res) {
 
   var returnInsuline = Math.round(insulineDose);
 
-  if (ValidateInput(weightNum, carbsOfMealNum)){
+  if (boluscalc.ValidateInput(weightNum, carbsOfMealNum)){
     res.send(returnInsuline.toString());
   }
   else res.send("error")

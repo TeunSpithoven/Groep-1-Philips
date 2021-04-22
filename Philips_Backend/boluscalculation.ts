@@ -13,6 +13,7 @@ export function InsulineTotalCalculation(weight: number): number {
   export function RatioCalculation(weight: number): number {
     // calculates the amount of carbs per insuline unit
     let ratio: number = 500 / InsulineTotalCalculation(weight);
+    ratio = Math.round((ratio + Number.EPSILON) * 100) / 100;
     return ratio;
   }
   
@@ -20,4 +21,17 @@ export function InsulineTotalCalculation(weight: number): number {
     // the insuline needed to be taken after the meal round off to 2 decimals
     let insulineDose: number = carbsOfMeal / RatioCalculation(weight);
     return Math.round(insulineDose);
+  }
+
+  export function ValidateInput(weight: number, carbsOfMeal: number) {
+    if (weight > 450 || weight < 0.25 || carbsOfMeal < 1 || carbsOfMeal > 300) {
+      return (false);
+    } else {
+      if (weight >= 0.25 && carbsOfMeal > 1) {
+        return (true);
+      }
+      else {
+        return (false);
+      }
+    }
   }
