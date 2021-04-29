@@ -14,7 +14,7 @@
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="bolus.js" defer></script>
+  <script src="dist/src/TypeScript/bolus.js" defer></script>
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -33,7 +33,7 @@
 
 
   <!-- Custom styles for this template -->
-  <link href="style2.css" rel="stylesheet">
+  <link href="css/styleIndex.css" rel="stylesheet">
 </head>
 
 <body class="text-center">
@@ -59,6 +59,16 @@
     </div>
     <div>
       <button class="w-100 btn btn-lg btn-primary" id="button">Bereken</button>
+    </div>
+    <br>
+    <div>
+      <input type="button" class="w-100 btn btn-lg btn-primary" value="Historie" onclick=" relocate_home()">
+      <script>
+        function relocate_home()
+          {
+            location.href = "history.html";
+          } 
+      </script>
     </div>
     <br>
     <div class="alert alert-danger" style="display: none;" role="alert" id="error">
