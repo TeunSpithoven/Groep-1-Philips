@@ -12,16 +12,16 @@ body {
 }
 
 .historyButton{
-    float: left;
-    left: 26%;
-    margin-left: 40%;
-    width: 250px;
+    width: 25%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .center {
     margin: auto;
     width: 75%;
     height: 100%;
-    border: 3px solid green;
     padding: 10px;
+    border: #44cf6e;
   }

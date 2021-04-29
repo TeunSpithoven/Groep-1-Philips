@@ -1,63 +1,56 @@
 <!DOCTYPE html>
 <html>
+<head>
 
-<head> 
-    
-      
-<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
-<script type="text/javascript">
+</head> 
 
-window.onload = function () {
-	var chart = new CanvasJS.Chart("chartContainer", { 
-		title: {
-			text: "Adding & Updating dataPoints"
-		},
-		data: [
-		{
-			type: "spline",
-			dataPoints: [
-				{ y: 10 },
-				{ y:  4 },
-				{ y: 18 },
-				{ y:  8 }	
-			]
-		}
-		]
-	});
-	chart.render();	
+<body>
+<!-- graph -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+  ];
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Berekeningen',
+      backgroundColor: '#f5f5f5',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [0, 10, 5, 2, 20, 30, 45],
+    }]
+  };</script>
+  <script>const config = {
+    type: 'line',
+    data,
+    options: {}
+  };</script>
+ 
 
-	$("#addDataPoint").click(function () {
 
-            var length = chart.options.data[0].dataPoints.length;
-	chart.options.title.text = "New DataPoint Added at the end";
-	chart.options.data[0].dataPoints.push({ y: 25 - Math.random() * 10});
-	chart.render();
-
-	});
-
-	$("#updateDataPoint").click(function () {
-
-	var length = chart.options.data[0].dataPoints.length;
-	chart.options.title.text = "Last DataPoint Updated";
-	chart.options.data[0].dataPoints[length-1].y = 15 - Math.random() * 10;
-	chart.render();
-
-	});
-}
-</script>
-
-</head>  
-<body> 
-    <div class="w3-container center">
-<div id="chartContainer" style="width:100%; height:280px"></div>  
+<div class="w3-container center" style="align-items: center;"> 
+<!-- bootstrap and css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
 <link href="css/styleHistory.css" rel="stylesheet"></link>
-<button class="btn btn-lg btn-primary historyButton" id="addDataPoint">Add Data Point</button>
-
-<button class="btn btn-lg btn-primary historyButton" id="updateDataPoint">Update Data Point</button>
-
+<!-- the graph -->
+<div> 
+    <canvas id="myChart"></canvas>
+</div>
+<script>
+    // === include 'setup' then 'config' above ===
+  
+    var myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script>
+<!-- button -->
+<div class="container center" style=" display: flex; justify-content: center; height: 10%;align-items: center;">
 <input type="button" class="btn btn-lg btn-primary historyButton" value="Berekenen" onclick=" relocate_home()">
     <script>
       function relocate_home()
@@ -66,5 +59,7 @@ window.onload = function () {
         } 
     </script>
     </div>
+    </div>
+    </body>
 </body>
 </html>
