@@ -24,6 +24,7 @@
    },
    "dependencies": {
       "bootstrap": "^5.0.0-beta3",
+      "chart.js": "^3.2.0",
       "cors": "^2.8.5",
       "fetch": "^1.1.0",
       "headers": "^0.9.6",
