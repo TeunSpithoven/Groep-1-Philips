@@ -13,6 +13,6 @@ export class Calc {
     carbsOfMeal: number;
 
     @Column()
-    date: number;
+    answer: number;
 
 }
