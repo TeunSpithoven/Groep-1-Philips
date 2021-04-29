@@ -1,5 +1,11 @@
 import express from "express";
 import * as boluscalc from "./boluscalculation";
+import "reflect-metadata";
+import {Calc} from "./entity/Calc";
+import { AddCalcToDatabase } from "./DatabaseHandler";
+import { Connection, createConnection } from "typeorm";
+
+
 
 const app = express();
 
@@ -31,12 +37,22 @@ app.get('/bolus/', async function (req, res) {
   var returnInsuline = Math.round(insulineDose);
 
   if (boluscalc.ValidateInput(weightNum, carbsOfMealNum)){
+    const calc = new Calc();
+    calc.weight = weightNum;
+    calc.carbsOfMeal = carbsOfMealNum;
+    calc.answer = returnInsuline;
+
+    AddCalcToDatabase(calc);
+
     res.send(returnInsuline.toString());
   }
   else res.send("error")
   
 });
 
-const port = process.env.PORT || 3000;
+createConnection().then(async connection => {
+      
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => console.log(`App listening on PORT ${port}`));
 
-app.listen(port, () => console.log(`App listening on PORT ${port}`));
+}).catch(error => console.log(error));
