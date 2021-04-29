@@ -1,5 +1,9 @@
 import express from "express";
 import * as boluscalc from "./boluscalculation";
+import "reflect-metadata";
+import {createConnection} from "typeorm";
+import {Calc} from "./entity/Calc";
+
 const app = express();
 
 app.get('/', (req, res) => {
@@ -36,6 +40,25 @@ app.get('/bolus/', async function (req, res) {
   
 });
 
-const port = process.env.PORT || 3000;
+createConnection().then(async connection => {
 
-app.listen(port, () => console.log(`App listening on PORT ${port}`));
+  console.log("Inserting a new user into the database...");
+  const calc = new Calc();
+  calc.weight = 80;
+  calc.carbsOfMeal = 100;
+  calc.date = 2;
+
+  await connection.manager.save(calc);
+  console.log("Saved a new user with id: " + calc.id);
+
+  console.log("Loading users from the database...");
+  //const calcs = await connection.manager.find(calc);
+  console.log("Loaded users: ", calc);
+
+  console.log("Here you can setup and run express/koa/any other framework.");
+
+  const port = process.env.PORT || 3000;
+
+  app.listen(port, () => console.log(`App listening on PORT ${port}`));
+
+}).catch(error => console.log(error));

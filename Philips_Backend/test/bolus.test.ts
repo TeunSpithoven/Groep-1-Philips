@@ -1,4 +1,4 @@
-import { InsulineTotalCalculation, BasalDoseCalculation, RatioCalculation, InsulineDoseCalculation, ValidateInput } from "../boluscalculation"; describe("Test bolus calc", () => {
+import { InsulineTotalCalculation, BasalDoseCalculation, RatioCalculation, InsulineDoseCalculation, ValidateInput } from "../src/boluscalculation"; describe("Test bolus calc", () => {
 
     describe("test insulineTotalCalculation", () => {
         it("should return 44 for weight(80)", () => {
