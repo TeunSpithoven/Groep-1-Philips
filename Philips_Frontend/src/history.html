@@ -5,23 +5,30 @@
 </head> 
 
 <body>
-<!-- graph -->
+<!-- graph------------------------------------------------------------------------ -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
   ];
+
+  var d = Array.from({length:10},(v,k)=>k+5)
+
   const data = {
     labels: labels,
     datasets: [{
-      label: 'Berekeningen',
+      label: 'Insuline Dosis',
       backgroundColor: '#f5f5f5',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: [d[0], d[1], d[2], d[3], d[4], d[5], d[6], d[7], d[8], d[9]],
     }]
   };</script>
   <script>const config = {
@@ -29,8 +36,7 @@
     data,
     options: {}
   };</script>
- 
-
+<!-- ------------------------------------------------------------------------------------- -->
 
 <div class="w3-container center" style="align-items: center;"> 
 <!-- bootstrap and css -->
