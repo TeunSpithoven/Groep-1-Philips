@@ -1,18 +1,21 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn} from "typeorm";
 
 @Entity()
 export class Calc {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    Id: number;
 
     @Column()
-    weight: number;
+    Weight: number;
 
     @Column()
-    carbsOfMeal: number;
+    CarbsOfMeal: number;
 
     @Column()
-    answer: number;
+    InsulineDose: number;
 
+    @CreateDateColumn()
+    date: Date;
+    
 }

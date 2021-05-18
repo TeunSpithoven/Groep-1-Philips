@@ -3,7 +3,7 @@ import * as boluscalc from "./boluscalculation";
 import "reflect-metadata";
 import {Calc} from "./entity/Calc";
 import { AddCalcToDatabase } from "./DatabaseHandler";
-import { Connection, createConnection } from "typeorm";
+import { createConnection } from "typeorm";
 
 
 
@@ -38,9 +38,9 @@ app.get('/bolus/', async function (req, res) {
 
   if (boluscalc.ValidateInput(weightNum, carbsOfMealNum)){
     const calc = new Calc();
-    calc.weight = weightNum;
-    calc.carbsOfMeal = carbsOfMealNum;
-    calc.answer = returnInsuline;
+    calc.Weight = weightNum;
+    calc.CarbsOfMeal = carbsOfMealNum;
+    calc.InsulineDose = returnInsuline;
 
     AddCalcToDatabase(calc);
 
