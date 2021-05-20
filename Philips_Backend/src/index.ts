@@ -26,7 +26,7 @@ app.get('/bolus/', async function (req, res) {
 
   var weightNum = Number(weight);
   var carbsOfMealNum = Number(carbsOfMeal);
-  var valid: boolean;
+  var valid: boolean = true;
 
   //log the inputs that the backend recived
   console.log(weight);
@@ -50,6 +50,9 @@ app.get('/bolus/', async function (req, res) {
     calc.InsulineDose = returnInsuline;
     valid = true;
     AddCalcToDatabase(calc);
+  }
+  else{
+    valid = false;
   }
   res.send(JSON.stringify({"insulineDose":`${returnInsuline}`, "valid":`${valid}` }));
 });

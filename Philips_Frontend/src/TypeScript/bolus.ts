@@ -13,7 +13,7 @@ function GetBolusCalculation(weight: number, carbsOfMeal: number) {
     fetch(url)
     .then(res => res.json())
     .then((out) => {
-        if(out.valid){
+        if(out.valid == "true"){
             Htmlcorrect.style.display = "block";
             HtmlError.style.display = "none";
             outputLabel.innerHTML = String(out.insulineDose);
@@ -21,6 +21,7 @@ function GetBolusCalculation(weight: number, carbsOfMeal: number) {
         else{
             HtmlError.style.display = "block";
             Htmlcorrect.style.display = "none";
+            outputLabel.innerHTML = String("");
         }
     })
 }
