@@ -4,6 +4,7 @@ import "reflect-metadata";
 import {Calc} from "./entity/Calc";
 import * as DatabaseHandler  from "./DatabaseHandler";
 import { createConnection } from "typeorm";
+import { getRepository } from "typeorm";
 
 
 
@@ -18,8 +19,10 @@ app.get('/jsontest', (req, res) => {
   res.send(JSON.stringify({"firstName":`${Name}`, "lastName":"Doe"}));
 });
 
-app.get('/GetCalc', (req, res) => {
-  var calcs = DatabaseHandler.GetCalcFromDatabase2();
+app.get('/GetCalc', async (req, res) => {
+  const calcRepo = getRepository(Calc);
+  const calcs = await calcRepo.find();
+  //console.log(calcs);
   console.log(calcs);
   res.send(calcs);
 })
