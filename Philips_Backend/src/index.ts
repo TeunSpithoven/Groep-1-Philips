@@ -11,7 +11,13 @@ const app = express();
 
 app.get('/', (req, res) => {
   res.send('Hello from express and typescript')
-})
+});
+
+app.get('/jsontest', (req, res) => {
+  var Name = Boolean(true);
+  res.send(JSON.stringify({"firstName":`${Name}`, "lastName":"Doe"}));
+});
+
 
 app.get('/bolus/', async function (req, res) {
 
@@ -20,6 +26,7 @@ app.get('/bolus/', async function (req, res) {
 
   var weightNum = Number(weight);
   var carbsOfMealNum = Number(carbsOfMeal);
+  var valid: boolean;
 
   //log the inputs that the backend recived
   console.log(weight);
@@ -41,13 +48,10 @@ app.get('/bolus/', async function (req, res) {
     calc.Weight = weightNum;
     calc.CarbsOfMeal = carbsOfMealNum;
     calc.InsulineDose = returnInsuline;
-
+    valid = true;
     AddCalcToDatabase(calc);
-
-    res.send(returnInsuline.toString());
   }
-  else res.send("error")
-  
+  res.send(JSON.stringify({"insulineDose":`${returnInsuline}`, "valid":`${valid}` }));
 });
 
 createConnection().then(async connection => {
