@@ -26,6 +26,16 @@ function GetBolusCalculation(weight: number, carbsOfMeal: number) {
     })
 }
 
+function jsontest(){
+    var url = "http://localhost:3000/GetCalc";
+    
+    fetch(url)
+    .then(res => res.json())
+    .then((out) => {
+        console.log(out);
+    })
+}
+
 // button click activation
 window.onload = function () {
     button.addEventListener("click", function () {

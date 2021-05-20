@@ -2,7 +2,7 @@ import express from "express";
 import * as boluscalc from "./boluscalculation";
 import "reflect-metadata";
 import {Calc} from "./entity/Calc";
-import { AddCalcToDatabase } from "./DatabaseHandler";
+import * as DatabaseHandler  from "./DatabaseHandler";
 import { createConnection } from "typeorm";
 
 
@@ -17,6 +17,12 @@ app.get('/jsontest', (req, res) => {
   var Name = Boolean(true);
   res.send(JSON.stringify({"firstName":`${Name}`, "lastName":"Doe"}));
 });
+
+app.get('/GetCalc', (req, res) => {
+  var calcs = DatabaseHandler.GetCalcFromDatabase2();
+  console.log(calcs);
+  res.send(calcs);
+})
 
 
 app.get('/bolus/', async function (req, res) {
@@ -49,7 +55,7 @@ app.get('/bolus/', async function (req, res) {
     calc.CarbsOfMeal = carbsOfMealNum;
     calc.InsulineDose = returnInsuline;
     valid = true;
-    AddCalcToDatabase(calc);
+    DatabaseHandler.AddCalcToDatabase(calc);
   }
   else{
     valid = false;
