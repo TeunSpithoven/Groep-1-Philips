@@ -26,8 +26,8 @@ function GetBolusCalculation(weight: number, carbsOfMeal: number) {
     })
 }
 
-function jsontest(){
-    var url = "http://localhost:3000/GetCalc";
+function GetCalcHistory(){
+    var url = "http://localhost:3000/getcalc";
     
     fetch(url)
     .then(res => res.json())

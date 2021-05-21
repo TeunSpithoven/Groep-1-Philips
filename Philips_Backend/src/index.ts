@@ -23,7 +23,6 @@ app.get('/GetCalc', async (req, res) => {
   const calcRepo = getRepository(Calc);
   const calcs = await calcRepo.find();
   //console.log(calcs);
-  console.log(calcs);
   res.send(calcs);
 })
 
