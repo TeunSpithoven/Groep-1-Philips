@@ -14,7 +14,7 @@
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="dist/src/TypeScript/bolus.js" defer></script>
+  <script src="dist/src/TypeScript/register.js" defer></script>
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -43,32 +43,37 @@
     <div>
       <label style="float: left;">Doctor/Patiënt</label>
     </div>
-    <div class="form-floating">
-      <input type="number" class="form-control" placeholder="Patiënt" id="weight2">
-    </div> <br>
+    <br>
+    <div>
+    <select class="form-control" aria-label="Doctor/Patiënt" id="roleRegister">
+      <option value="1">Doctor</option>
+      <option selected value="2">Patiënt</option>
+    </select>
+  </div>
+    <br>
     <div>
       <label style="float: left;">Naam</label>
     </div>
     <div class="form-floating">
-      <input type="string" class="form-control" placeholder="Joost Joosten" id="carbs2">
+      <input type="string" class="form-control" placeholder="Joost Joosten" id="nameRegister">
     </div>
     <br>
     <div>
-        <label style="float: left;">Wachtwoord</label>
+      <label style="float: left;">Wachtwoord</label>
       </div>
       <div class="form-floating">
-        <input type="number" class="form-control" placeholder="Wachtwoord123" id="weight2">
+        <input type="password" class="form-control" placeholder="Wachtwoord123" id="passwordRegister">
       </div> <br>
     <div>
-      <button class="w-100 btn btn-lg btn-primary" id="button">Registreren</button>
+      <button class="w-100 btn btn-lg btn-primary" id="buttonRegister">Registreren</button>
     </div>
     <br>
     <br>
-    <div class="alert alert-danger" style="display: none;" role="alert" id="error">
+    <div class="alert alert-danger" style="display: none;" role="alert" id="errorRegister">
       Mislukt, heb je de juiste informatie ingevuld?
     </div>
 
-    <div class="alert alert-success" style="display: none;" role="alert" id="correct">
+    <div class="alert alert-success" style="display: none;" role="alert" id="correctRegister">
       Gelukt!
     </div>
 

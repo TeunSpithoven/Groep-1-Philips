@@ -2,11 +2,9 @@ import express from "express";
 import * as boluscalc from "./boluscalculation";
 import "reflect-metadata";
 import {Calc} from "./entity/Calc";
-import * as DatabaseHandler  from "./DatabaseHandler";
+import * as DatabaseHandler  from "./Data/CalcData";
 import { createConnection } from "typeorm";
 import { getRepository } from "typeorm";
-
-
 
 const app = express();
 

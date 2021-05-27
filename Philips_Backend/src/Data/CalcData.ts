@@ -1,7 +1,6 @@
 import "reflect-metadata";
 import { getRepository } from "typeorm";
-import {Calc} from "./entity/Calc";
-
+import {Calc} from "../entity/Calc";
 
 export const AddCalcToDatabase = async (calc: Calc) =>{
     const calcRepo = getRepository(Calc);
