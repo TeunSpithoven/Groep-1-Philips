@@ -1,8 +1,9 @@
+
 let datalabel = (<HTMLInputElement>document.getElementById("Data"));
 var _out;
 var ctx = document.getElementById('myChart');
-// var Chart = require('chart.js');
-window.onload = function () {
+
+document.addEventListener("DOMContentLoaded", function () {
     var url = "http://localhost:3000/getcalc";
 
     fetch(url)
@@ -11,8 +12,9 @@ window.onload = function () {
     _out = out
     console.log(out);
     tableCreate();
+    MakeGraph()
 })
-}
+})
 
 function tableCreate() {
     var table: HTMLTableElement = <HTMLTableElement> document.getElementById("Table");
@@ -29,72 +31,34 @@ function tableCreate() {
     });
   }
 
+    var labels = [];
+    var datas = []
+    
+      var data = {
+        labels: labels,
+        datasets: [{
+          label: 'Insuline Dosis',
+          backgroundColor: '#f5f5f5',
+          borderColor: 'rgb(255, 99, 132)',
+          data: datas,
+        }]
+      };
+      const config = {
+        type: 'line',
+        data,
+        options: {}
+      };
 
-// de dagen
-// const labels = Utils.months({count: 7});
-/*
-const data = {
-//   labels: labels,
-  datasets: [{
-    label: 'My First Dataset',
-    //insuline dosis
-    data: [65, 59, 80, 81, 56, 55, 40],
-    fill: false,
-    borderColor: 'rgb(75, 192, 192)',
-    tension: 0.1
-  }]
-};
+      var Chart;
+      var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
 
-const config = {
-    type: 'line',
-    data: data,
-};
-
-window.onload = function () {
-    var url = "http://localhost:3000/getcalc";
-
-    fetch(url)
-    .then(res => res.json())
-    .then((out) => {
-    _out = out
-    console.log(out);
-    PrintList();
-})
-}
-
-function PrintList(){
-    var str1 = new String("");
+function MakeGraph(){
     _out.forEach(element => {
-        var str2 = new String("InsulineDose = " + element.InsulineDose + "<br/>");
-        str1 = str1.concat(str2.toString());
+        labels.push(element.date);
+        datas.push(element.InsulineDose);
     });
-    datalabel.innerHTML = str1.toString();
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-import { Chart, LineController, LineElement, PointElement, LinearScale, Title } from "chart.js";
-
-Chart.register(LineController, LineElement, PointElement, LinearScale, Title);
-
-const chart = new Chart(ctx, {
-    type: 'line',
-    // data: ...
-    options: {
-        plugins: {
-            title: {
-                display: true,
-                text: 'Chart Title'
-            }
-        },
-        scales: {
-            x: {
-                type: 'linear'
-            },
-            y: {
-                type: 'linear'
-            }
-        }
-    }
-})
-*/
+    myChart.update();
+  }
