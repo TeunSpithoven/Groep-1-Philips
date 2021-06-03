@@ -6,37 +6,68 @@
     <script src="dist/src/TypeScript/table.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.0/dist/chart.min.js"></script>
     <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styleHistory.css">
     </head>
   <body>
-    
+    <header id="header">
+
+      <div id="logo">
+        <a>bolus calculatie</a>
+      </div>
+      
+      <nav id="main-navigation">
+        <ul>
+          <input type="button" class="btn btn-lg btn-primary historyButton" value="Bereken" onclick=" relocate_home()">
+          <input type="button" class="btn btn-lg btn-primary historyButton" value="Logout" onclick=" relocate_logout()">
+        </ul>
+      </nav>
+
+    </header>
     <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-    <div class="w3-container center" style="align-items: center;"> 
-    <input type="button" class="btn btn-lg btn-primary historyButton" value="Terug naar de Bereken pagina" onclick=" relocate_home()">
-    </div>
     <script>
       function relocate_home()
         {
           location.href = "index.html";
         } 
     </script>
+    <script>
+      function relocate_logout()
+        {
+          const date = new Date();
+          // Set it expire in -1 days
+          date.setTime(date.getTime() + (-1 * 24 * 60 * 60 * 1000));
+          // Set it
+          document.cookie = "Login=; expires="+date.toUTCString()+"; path=/";
+          location.href = "login.html";
+        } 
+    </script>
     <!-- graph------------------------------------------------------------------------ -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 <script></script>
   <script></script>
+  <div id="bottom-part">
+    <div class="main-container">
 
-<div> 
-    <canvas id="myChart"></canvas>
-</div>
-<script></script>
-    
-    <table class="table table-striped" id="Table">
-        <tr>
-            <th>Insuline Dose</th>
-            <th>Carbs Of Meal</th>
-            <th>Weight</th>
-            <th>Date</th>
-        </tr>
+      <div class="chart-container"> 
+        <h3>Grafiek van berekeningen:</h3>
+        <canvas id="myChart" style="margin-bottom: 20px;"></canvas>
+    </div>
+    <script></script>
         
-    </table>
+        <table class="table table-striped" id="Table">
+            <tr>
+                <th>Insuline Dose</th>
+                <th>Carbs Of Meal</th>
+                <th>Weight</th>
+                <th>Date</th>
+            </tr>
+          </table>
+
+          <footer class= "footer">
+            <h3>&copy; 2021, Philips </h3>
+          </footer>
+    </div>
+  </div>
+
   </body>
 </html>

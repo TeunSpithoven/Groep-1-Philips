@@ -14,7 +14,7 @@
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="dist/src/TypeScript/bolus.js" defer></script>
+  <script src="dist/src/TypeScript/login.js" defer></script>
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -38,43 +38,32 @@
 <body class="text-center">
 
   <main class="form-signin">
-    <h1 style="float: left; padding-bottom: 20px;" class="h3 mb-3 fw-normal">Bereken insuline dosis</h1>
-
+    <h1 style="margin-right: 230px;" class="h3 mb-3 fw-normal">Login</h1>
+    
     <div>
-      <label style="float: left;">Lichaamsgewicht in kilogram:</label>
+      <label style="float: left;">Gebruikersnaam</label>
     </div>
     <div class="form-floating">
-      <input type="number" class="form-control" placeholder="80" id="weight2">
+      <input type="text" class="form-control" placeholder="Jan Janssen" id="usernameLogin" require>
     </div> <br>
     <div>
-      <label style="float: left;">Koolhydraten in gram:</label>
+      <label style="float: left;">Wachtwoord</label>
     </div>
     <div class="form-floating">
-      <input type="number" class="form-control" placeholder="70" id="carbs2">
+      <input type="password" class="form-control" placeholder="Wachtwoord123" id="passwordLogin" require>
     </div>
     <br>
     <div>
-      <label>Aantal te nemen insuline units: </label> <label id="bolusOutputLabel"></label>
-    </div>
-    <div>
-      <button class="w-100 btn btn-lg btn-primary" id="button">Bereken</button>
+      <button class="w-100 btn btn-lg btn-primary" id="buttonLogin">Log in</button>
     </div>
     <br>
-    <div>
-      <input type="button" class="w-100 btn btn-lg btn-primary" value="Historie" onclick=" relocate_home()">
-      <script>
-        function relocate_home()
-          {
-            location.href = "history.html";
-          } 
-      </script>
-    </div>
+    <p><a href="register.html">Registreer</a></p>
     <br>
-    <div class="alert alert-danger" style="display: none;" role="alert" id="error">
+    <div class="alert alert-danger" style="display: none;" role="alert" id="errorLogin">
       Mislukt, heb je de juiste informatie ingevuld?
     </div>
 
-    <div class="alert alert-success" style="display: none;" role="alert" id="correct">
+    <div class="alert alert-success" style="display: none;" role="alert" id="correctLogin">
       Gelukt!
     </div>
   </main>

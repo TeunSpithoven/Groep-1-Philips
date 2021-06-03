@@ -7,7 +7,7 @@ let passwordRegister = (<HTMLInputElement>document.getElementById("passwordRegis
 
 // button click activation
 window.onload = function () {
-    button.addEventListener("click", function () {
+    buttonRegister.addEventListener("click", function () {
         Register(roleRegister.value, nameRegister.value, passwordRegister.value)
     });
 }
@@ -16,19 +16,20 @@ window.onload = function () {
 function Register(role: string, name: string, password: string) {
     var params = 'role=' + role + "&name=" + name + "&password=" + password;
     var url = 'http://localhost:3000/register/?' + params;
-    
+
     fetch(url)
-    .then(res => res.json())
-    .then((out) => {
-        if(out.valid == "true"){
-            Htmlcorrect.style.display = "block";
-            HtmlError.style.display = "none";
-            outputLabel.innerHTML = String(out.insulineDose);
-        }
-        else{
-            HtmlError.style.display = "block";
-            Htmlcorrect.style.display = "none";
-            outputLabel.innerHTML = String("");
-        }
-    })
+        .then(res => res.json())
+        .then((out) => {
+            if (out.valid == "true") {
+                HtmlcorrectRegister.style.display = "block";
+                HtmlErrorRegister.style.display = "none";
+
+                location.href = "login.html";
+
+            }
+            else {
+                HtmlErrorRegister.style.display = "block";
+                HtmlcorrectRegister.style.display = "none";
+            }
+        })
 }

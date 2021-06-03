@@ -1,10 +1,16 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
-export abstract class User {
+export class User {
 
-    @PrimaryGeneratedColumn()
-    Id: number;
+    @PrimaryGeneratedColumn("uuid")
+    Id: string;
+
+    @Column()
+    Role: number;
+
+    @Column()
+    DoctorId: number;
 
     @Column()
     Username: string;

@@ -36,6 +36,38 @@
 </head>
 
 <body class="text-center">
+  <header id="header">
+
+    <div id="logo">
+      <a>bolus calculatie</a>
+    </div>
+    
+    <nav id="main-navigation">
+      <ul>
+        <label id="name">Niet ingelogd</label>
+        <input type="button" class="btn btn-lg btn-primary historyButton" value="Historie" onclick=" relocate_history()">
+        <input type="button" class="btn btn-lg btn-primary historyButton" value="Logout" onclick=" relocate_logout()">
+      </ul>
+    </nav>
+
+  </header>
+  <script>
+    function relocate_history()
+      {
+        location.href = "history.html";
+      } 
+  </script>
+  <script>
+    function relocate_logout()
+        {
+          const date = new Date();
+          // Set it expire in -1 days
+          date.setTime(date.getTime() + (-1 * 24 * 60 * 60 * 1000));
+          // Set it
+          document.cookie = "Login=; expires="+date.toUTCString()+"; path=/";
+          location.href = "login.html";
+        }
+  </script>
 
   <main class="form-signin">
     <h1 style="float: left; padding-bottom: 20px;" class="h3 mb-3 fw-normal">Bereken insuline dosis</h1>
@@ -77,6 +109,7 @@
     <div class="alert alert-success" style="display: none;" role="alert" id="correct">
       Gelukt!
     </div>
+    
   </main>
 </body>
 </html>

@@ -44,30 +44,34 @@
       <label style="float: left;">Doctor/Patiënt</label>
     </div>
     <br>
-    <div>
-    <select class="form-control" aria-label="Doctor/Patiënt" id="roleRegister">
-      <option value="1">Doctor</option>
-      <option selected value="2">Patiënt</option>
-    </select>
-  </div>
-    <br>
-    <div>
-      <label style="float: left;">Naam</label>
-    </div>
-    <div class="form-floating">
-      <input type="string" class="form-control" placeholder="Joost Joosten" id="nameRegister">
-    </div>
-    <br>
-    <div>
-      <label style="float: left;">Wachtwoord</label>
+    <form>
+
+      <div>
+        <select class="form-control" aria-label="Doctor/Patiënt" id="roleRegister">
+          <option value="1">Doctor</option>
+          <option selected value="2">Patiënt</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <label style="float: left;">Naam</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" placeholder="Wachtwoord123" id="passwordRegister">
+        <input required type="string" class="form-control" placeholder="Gebruikersnaam" id="nameRegister">
+      </div>
+      <br>
+      <div>
+        <label style="float: left;">Wachtwoord</label>
+      </div>
+      <div class="form-floating">
+        <input required type="password" class="form-control" placeholder="Wachtwoord" id="passwordRegister">
       </div> <br>
-    <div>
-      <button class="w-100 btn btn-lg btn-primary" id="buttonRegister">Registreren</button>
-    </div>
+      <div>
+        <button type="submit" class="w-100 btn btn-lg btn-primary" id="buttonRegister">Registreren</button>
+      </div>
+    </form>
     <br>
+    <p><a href="login.html">Log in</a></p>
     <br>
     <div class="alert alert-danger" style="display: none;" role="alert" id="errorRegister">
       Mislukt, heb je de juiste informatie ingevuld?
@@ -79,4 +83,5 @@
 
   </main>
 </body>
+
 </html>

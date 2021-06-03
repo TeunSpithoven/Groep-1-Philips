@@ -7,6 +7,9 @@ export class Calc {
     Id: number;
 
     @Column()
+    UserId: string;
+
+    @Column()
     Weight: number;
 
     @Column()
