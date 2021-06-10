@@ -1,8 +1,5 @@
 # Groep-1-Philips
 
-kijk in de readme in de front en back-end hoe je die moet starten
-
-Bolus calculatie, typescript application with jest unit testing
 ## Installatie:
 Als je nog geen [NodeJS](https://nodejs.org/en/download/) op je computer hebt staan, installeer dit dan eerst.<br/>
 Daarnaast moet je Typescript installeren:
@@ -19,3 +16,7 @@ Om een handmatige unit test uit te voeren in de terminal:
 ```bash
 $ npm test
 ```
+
+kijk in de readme in de front en back-end hoe je die moet starten
+
+Bolus calculatie, typescript application with jest unit testing
