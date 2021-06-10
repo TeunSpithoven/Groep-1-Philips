@@ -36,15 +36,20 @@
 </head>
 
 <body class="text-center">
+  <header id="header">
+
+    <div id="logo">
+      <a>bolus calculatie</a>
+    </div>
+  </header>
 
   <main class="form-signin">
-    <h1 style="float: left; padding-bottom: 20px;" class="h3 mb-3 fw-normal">Account aanmaken</h1>
+    <h1 style="float: left; padding-bottom: 20px; margin-top: 10px;" class="h3 mb-3 fw-normal">Account aanmaken</h1>
 
     <div>
       <label style="float: left;">Doctor/Patiënt</label>
     </div>
     <br>
-    <form>
 
       <div>
         <select class="form-control" aria-label="Doctor/Patiënt" id="roleRegister">
@@ -57,30 +62,31 @@
         <label style="float: left;">Naam</label>
       </div>
       <div class="form-floating">
-        <input required type="string" class="form-control" placeholder="Gebruikersnaam" id="nameRegister">
+        <input  type="string" class="form-control" placeholder="Gebruikersnaam" id="nameRegister">
       </div>
       <br>
       <div>
         <label style="float: left;">Wachtwoord</label>
       </div>
       <div class="form-floating">
-        <input required type="password" class="form-control" placeholder="Wachtwoord" id="passwordRegister">
+        <input  type="password" class="form-control" placeholder="Wachtwoord" id="passwordRegister">
       </div> <br>
       <div>
-        <button type="submit" class="w-100 btn btn-lg btn-primary" id="buttonRegister">Registreren</button>
+        <button class="w-100 btn btn-lg btn-primary" id="buttonRegister">Registreren</button>
       </div>
-    </form>
     <br>
     <p><a href="login.html">Log in</a></p>
     <br>
     <div class="alert alert-danger" style="display: none;" role="alert" id="errorRegister">
-      Mislukt, heb je de juiste informatie ingevuld?
+      Sorry, Deze gebruikersnaam is al in gebruik of je hebt nog niet alle gegevens ingevuld.
     </div>
 
     <div class="alert alert-success" style="display: none;" role="alert" id="correctRegister">
       Gelukt!
     </div>
-
+    <footer class= "footer">
+      <h3>&copy; 2021, Philips </h3>
+    </footer>
   </main>
 </body>
 

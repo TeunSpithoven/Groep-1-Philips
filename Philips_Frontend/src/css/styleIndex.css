@@ -72,3 +72,18 @@ body {
 #main-navigation li{
   display: inline;
 }
+/* Footer */
+.footer {
+  width: 100%;
+  height: 50px;
+  left: 0;
+  position: absolute;
+  /*bottom: -490px;*/
+  text-align: center;
+  background-color: rgba(9,47,82,1.0);
+  color: white;
+  background: linear-gradient(to bottom right,#003655 0,#0066a1 50%,#0096ee 100%);
+  background-repeat: repeat-x;
+  /*border: 5px solid rgba(9,47,82,1.0);*/
+  bottom: 0;
+}

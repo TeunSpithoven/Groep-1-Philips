@@ -12,7 +12,7 @@ window.onload = function () {
     });
 }
 
-// sends user input and gets calculated insuline dose with validation
+// sends new user details and check if it was valid
 function Register(role: string, name: string, password: string) {
     var params = 'role=' + role + "&name=" + name + "&password=" + password;
     var url = 'http://localhost:3000/register/?' + params;
@@ -20,12 +20,11 @@ function Register(role: string, name: string, password: string) {
     fetch(url)
         .then(res => res.json())
         .then((out) => {
+            console.log(out.valid); 
             if (out.valid == "true") {
                 HtmlcorrectRegister.style.display = "block";
                 HtmlErrorRegister.style.display = "none";
-
                 location.href = "login.html";
-
             }
             else {
                 HtmlErrorRegister.style.display = "block";

@@ -1,5 +1,5 @@
 let _coockie: Login;
-
+let NameTable = (<HTMLInputElement>document.getElementById("name"));
 let datalabel = (<HTMLInputElement>document.getElementById("Data"));
 var _out;
 var ctx = document.getElementById('myChart');
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var temp = getCookie("Login");
   if (temp != undefined) {
     _coockie = JSON.parse(temp);
+    NameTable.innerHTML = _coockie.Username;
 
     var url = "http://localhost:3000/getcalc?userId=" + _coockie.Id;
 

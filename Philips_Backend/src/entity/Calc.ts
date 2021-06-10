@@ -18,7 +18,7 @@ export class Calc {
     @Column()
     InsulineDose: number;
 
-    @CreateDateColumn()
-    date: Date;
+    @Column()
+    date: string;
     
 }

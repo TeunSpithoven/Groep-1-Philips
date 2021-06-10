@@ -4,22 +4,22 @@ import "reflect-metadata";
 import { Calc } from "./entity/Calc";
 import * as CalcData from "./Data/CalcData";
 import * as UserData from "./Data/UserData";
-import { createConnection } from "typeorm";
+import { createConnection, createQueryBuilder } from "typeorm";
 import { getRepository } from "typeorm";
 import { User } from "./entity/User";
+import cors from "cors"
 
 const app = express();
+app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('Hello from express and typescript')
+  res.send('Proftaak groep 1 API')
 });
 
 app.get('/GetCalc', async function (req, res) {
   var userId = String(req.query.userId);
-  console.log(userId);
   const calcRepo = getRepository(Calc);
-  const calcs = await calcRepo.find({ where: { UserId: userId }});
-  //console.log(calcs);
+  const calcs = await calcRepo.find({ where: { UserId: userId } });
   res.send(calcs);
 })
 
@@ -33,10 +33,6 @@ app.get('/bolus/', async function (req, res) {
   var carbsOfMealNum = Number(carbsOfMeal);
   var valid: boolean = true;
 
-  //log the inputs that the backend recived
-  console.log(weight);
-  console.log(carbsOfMeal);
-
   // the insuline needed to be taken after the meal round off to 2 decimals
   let insulineDose = boluscalc.InsulineDoseCalculation(weightNum, carbsOfMealNum);
 
@@ -48,6 +44,7 @@ app.get('/bolus/', async function (req, res) {
     calc.CarbsOfMeal = carbsOfMealNum;
     calc.InsulineDose = returnInsuline;
     calc.UserId = userId;
+    calc.date = new Date().toJSON().slice(0,10);
     valid = true;
     CalcData.AddCalcToDatabase(calc);
   }
@@ -59,45 +56,44 @@ app.get('/bolus/', async function (req, res) {
 
 app.get('/Register/', async function (req, res) {
   var valid: boolean = false;
-  var role = (req.query.role);
-  var username = (req.query.name);
-  var password = (req.query.password);
+  
+  var role = Number(req.query.role);
+  var username = String(req.query.name);
+  var password = String(req.query.password);
 
-  var roleNumber = Number(role);
-  var usernameString = String(username);
-  var passwordString = String(password);
+  const UserRepo = getRepository(User);
+  var users = await UserRepo.find({ where: { Username: username } });
 
-  // CHECK IF THE USERNAME IS ALREADY IN USE
-
-  const user = new User();
-  user.Username = usernameString;
-  user.Password = passwordString;
-  user.Role = roleNumber;
-  UserData.AddUserToDatabase(user);
-  valid = true;
+  if (users.length != 0 || username == "" || password == ""){
+    valid = false;
+  }
+  else {
+    const user = new User();
+    user.Username = username;
+    user.Password = password;
+    user.Role = role;
+    UserData.AddUserToDatabase(user);
+    valid = true;
+  }
 
   res.send(JSON.stringify({ "valid": `${valid}` }));
 });
 
 app.get('/Login/', async function (req, res) {
   // in: username, password
-  var _username = (req.query.name);
-  var _password = (req.query.password);
-  var username = String(_username);
-  var password = String(_password);
+  var username = String(req.query.username);
+  var password = String(req.query.password);
   var valid: boolean = false;
 
-  const userRepo = getRepository(User);
-  const users = await userRepo.find({ where: [{ Username: username }, { Password: password }] });
-  // out: id, username, password
-  var user = users[0];
-  if (user != undefined) {
-    if (user.Password == password) {
-      valid = true;
+  const userRepo = getRepository(User)
+  const users = await userRepo.find({ where: { Username: username} });
+  const user = users[0];
+
+  // dit hier onder kan korter namelijk: 
+  if(user != undefined && user.Password == password){
+    valid = true;
       res.send(JSON.stringify({ "valid": `${valid}`, "Id": `${user.Id}`, "Username": `${user.Username}`, "Role": `${user.Role}`, }));
-    }
-  }
-  else {
+  }else{
     res.send(JSON.stringify({ "valid": `${valid}` }));
   }
 });

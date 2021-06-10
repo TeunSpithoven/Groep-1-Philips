@@ -36,21 +36,26 @@
 </head>
 
 <body class="text-center">
+  <header id="header">
 
-  <main class="form-signin">
+    <div id="logo">
+      <a>bolus calculatie</a>
+    </div>
+  </header>
+  <main  style="margin-top: 20px;" class="form-signin">
     <h1 style="margin-right: 230px;" class="h3 mb-3 fw-normal">Login</h1>
     
     <div>
       <label style="float: left;">Gebruikersnaam</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" placeholder="Jan Janssen" id="usernameLogin" require>
+      <input type="text" class="form-control" placeholder="Gebruikersnaam" id="usernameLogin" require>
     </div> <br>
     <div>
       <label style="float: left;">Wachtwoord</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" placeholder="Wachtwoord123" id="passwordLogin" require>
+      <input type="password" class="form-control" placeholder="Wachtwoord" id="passwordLogin" require>
     </div>
     <br>
     <div>
@@ -66,6 +71,9 @@
     <div class="alert alert-success" style="display: none;" role="alert" id="correctLogin">
       Gelukt!
     </div>
+    <footer class= "footer">
+      <h3>&copy; 2021, Philips </h3>
+    </footer>
   </main>
 </body>
 </html>
