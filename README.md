@@ -1,5 +1,5 @@
 # Groep-1-Philips
-
+Bolus calculatie, typescript application with jest unit testing
 ## Installatie:
 Als je nog geen [NodeJS](https://nodejs.org/en/download/) op je computer hebt staan, installeer dit dan eerst.<br/>
 Daarnaast moet je Typescript installeren:
@@ -19,4 +19,3 @@ $ npm test
 
 kijk in de readme in de front en back-end hoe je die moet starten
 
-Bolus calculatie, typescript application with jest unit testing
