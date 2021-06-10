@@ -14,8 +14,9 @@ app.get('/', (req, res) => {
   res.send('Hello from express and typescript')
 });
 
-app.get('/GetCalc', async (req, res) => {
-  var userId = String(req.query.userid);
+app.get('/GetCalc', async function (req, res) {
+  var userId = String(req.query.userId);
+  console.log(userId);
   const calcRepo = getRepository(Calc);
   const calcs = await calcRepo.find({ where: { UserId: userId }});
   //console.log(calcs);
