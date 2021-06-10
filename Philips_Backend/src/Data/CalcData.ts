@@ -7,5 +7,4 @@ export const AddCalcToDatabase = async (calc: Calc) =>{
     await calcRepo.save(calc).catch((err) => {
         console.log(err);
     });
-    console.log("calc added with id = " + calc.Id);
 }
