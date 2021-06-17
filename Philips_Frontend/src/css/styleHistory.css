@@ -86,7 +86,7 @@ table, td, th {
   width: 100%;
   height: 50px;
   left: 0;
-  position: absolute;
+  /*position: absolute;*/
   /*bottom: -490px;*/
   text-align: center;
   background-color: rgba(9,47,82,1.0);
