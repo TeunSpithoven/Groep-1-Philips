@@ -1,12 +1,17 @@
-# Groep-1-Philips
+# Groep-1-Philips front-end
 
-Om gebruik te maken van de front-end
+## Om gebruik te maken van de front-end
+Om alle packages te downloaden die nodig zijn voor het project voer dit command uit in de terminal:
+```bash
+npm install
+```
+<br/>
 
-Stap 1: "npm install"
-
-Stap 2: "npx tsc"
+Dan moet het typescript gecompileerd worden
+```bash
+npm run-script build
+```
 
 Stap 3: Open index.html met live server
-
-(optioneel: als je van de volledige functionaliteit gebruik wil maken moet je de back-end opstarten.)
-((zie readmy in back-end))
+<br/> <br/>
+Voor het gebruik van de web app is ook de back-end nodig. Lees daarvoor de readme in de back-end
