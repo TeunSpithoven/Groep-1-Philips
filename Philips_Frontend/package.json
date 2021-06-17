@@ -4,8 +4,7 @@
    "description": "bolus Setup",
    "main": "app.js",
    "scripts": {
-      "test": "jest",
-      "start": "ts-node src/index.ts"
+      "build": "npx tsc"
    },
    "keywords": [
       "typescript"
